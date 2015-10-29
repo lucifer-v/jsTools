@@ -1,0 +1,157 @@
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<script src="tools.js"></script>
+<!-- Array扩展 -->
+<script>
+var v= new vTools();
+
+/** 1. Array::oddFilter()
+var ary = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+//#过滤出奇数
+//$retAry = ary.oddFilter( );
+//document.write($retAry);
+//#过滤出偶数
+//$retAry = ary.oddFilter( false );
+//document.write($retAry);   **/
+
+/** 2. Array:evenFilter()
+var ary = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+//#过滤出偶数
+//$retAry = ary.evenFilter( );
+//document.write($retAry);
+//#过滤出奇数
+//$retAry = ary.evenFilter( false );
+//document.write($retAry);   **/
+
+/** 3. Array::modFiler() 
+var ary = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+//#过滤出3的倍数
+//$retAry = ary.modFilter( 3 );
+//document.write($retAry);
+//#过滤出非3的倍数
+//$retAry = ary.modFilter( 3, false );
+//document.write($retAry);  **/
+
+/** 4. Array::sum 
+var ary = v.range(1, 100);
+var rAry = [ 1, 2, [3, 4], [[5, 6], [7, 8]]];
+v.echo( '非递归数组: ', ary.sum(), "<br />" );
+v.echo( '二维数组-不支持递归: ', rAry.sum(), "<br />" );
+v.echo( '二维数组-支持递归 :', rAry.sum( true ), "<br />" ) ;
+**/
+
+/** 5. Array::rmv
+var ary = ['u', 'e', '2', 'r', 'e', '4'];
+v.echo('原数组：', ary,  '<br />');
+ary.rmv('e');
+v.echo( '删除第一个e : ', ary,  '<br />');
+ary = ['u', 'e', '2', 'r', 'e', '4'];
+ary.rmv('e', true);
+v.echo( '删除所有e : ', ary, '<br />');
+ **/
+
+</script>
+
+<!-- String扩展 -->
+<script>
+var v= new vTools();
+
+/** 1. ltrim 
+var str = "   hello world", retStr ;
+retStr = str.ltrim();
+v.echo( "before ltrim : "+str.length ); v.br();
+v.echo( "after ltrim : " + retStr.length ); v.br();  **/
+
+/** 2. rtirm 
+var str = "hello world   ", retStr ;
+retStr = str.rtrim();
+v.echo( "before rtrim : "+str.length ); v.br();
+v.echo( "after rtrim : " + retStr.length ); v.br();   **/
+
+/** 3. getByteNum 
+v.echo( v.getByteNum(), "  ", v.getByteNum(), "<br />" );  
+**/
+
+/** 4. getHex 
+v.echo( v.getHex( true ), "  ", v.getHex(), "<br />" );  **/
+
+/** 5. getRgb
+v.echo( v.getRgb( true ), "  ", v.getRgb(), "<br />" ); **/
+
+/** 6. strrev 
+var str = "abcdef";
+v.echo( 'before reverse : ',  str, '<br />' );
+rStr = str.strrev();
+v.echo( 'after reverse : ',  rStr, '<br />' );
+**/
+
+/** 7. ucfirst
+var str = 'abcdef';
+v.echo( 'before ucfirst : ', str, '<br />' );
+ucStr = str.ucfirst();
+v.echo( 'after ucfirst : ', ucStr, '<br />' );
+  **/
+
+/** 8. lcfirst 
+var str = 'ABCDEF';
+v.echo( 'before lcfirst : ', str, '<br />' );
+lcStr = str.lcfirst();
+v.echo( 'after lcfirst : ', lcStr, '<br />' );
+**/
+
+</script>
+
+<!-- vTools类方法测试 -->
+<script>
+var v= new vTools();
+var ary = [1, 2, 3, 4, 5], num = 123, str = 'hello',
+		obj = {}, bool = true, nullObj = null ;
+ function sayHello() { alert("hello"); }
+ obj.sayBye = function(){ alert('bye'); };
+
+/** #1 数组检测 vTools::is_array()
+document.write( 'ary : ' + v.is_array( ary ) + "<br />" );
+document.write( 'num : ' + v.is_array( num ) + "<br />" );
+document.write( 'str : ' + v.is_array( str ) + "<br />" );
+document.write('obj : ' + v.is_array(obj) + "<br />");
+document.write('bool : ' + v.is_array(bool) + "<br />");
+document.write('nullObj : ' + v.is_array(nullObj) + "<br />");  
+**/
+
+/** #2 布尔类型检测 vTools::is_bool()
+v.echo( 'ary: ',  v.is_bool(ary), '<br />');
+v.echo( 'num: ',  v.is_bool(num), '<br />');
+v.echo( 'str: ',  v.is_bool(str), '<br />');
+v.echo( 'obj: ',  v.is_bool(obj), '<br />');
+v.echo( 'bool: ',  v.is_bool(bool), '<br />');
+v.echo( 'nullObj: ',  v.is_bool(nullObj), '<br />');  
+ **/
+
+ /** #3 实数类型检测 vTools::is_double()
+ v.echo( ' 12.3  is double : ', v.is_double( '12.3' ), '<br />' );
+ v.echo( ' 776  is double : ', v.is_double( 776 ), '<br />' );
+ v.echo( ' 0.44.3  is double : ', v.is_double( '0.44.3' ), '<br />' );
+ v.echo( ' a12.2  is double : ', v.is_double( 'a12.2' ), '<br />' );
+ v.echo( ' .6554  is double : ', v.is_double( '.6554' ), '<br />' );
+  **/
+
+  /** #4 可调用结构检测 vTools::is_callable()
+  v.echo( 'sayHello() is callable: ', v.is_callable( sayHello ), "<br />" );
+  v.echo( 'obj is callable: ', v.is_callable( obj ), "<br />" );
+  v.echo( 'obj.sayBye is callable: ', v.is_callable( obj.sayBye ), "<br />" );
+ **/
+
+ /** #5 随机整数 vTools::rand()
+ v.echo('random in [1, 5] : ', v.rand(1, 5), "<br />");
+ v.echo('random in [1, 5] : ', v.rand(1, 5), "<br />");
+ v.echo('random in [1, 5] : ', v.rand(1, 5), "<br />");
+ v.echo('random in [1, 5] : ', v.rand(1, 5), "<br />");
+ v.echo('random in [1, 5] : ', v.rand(1, 5), "<br />");
+**/
+
+/**#6  vTools::range() 
+var ary = v.range(1, 5);
+v.echo( ary );
+**/
+
+
+</script>
