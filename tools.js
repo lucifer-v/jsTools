@@ -336,3 +336,32 @@ vTools.prototype.getRgb = function( _upperFlag ){
 		}
 		return retAry;
   }//range
+
+  //数据转换
+  /**
+     * 给定对象,将其转换为'?key=val&..'或'key=value&...'形式的字符串
+     *
+     * @author Lucifer
+     * @create-date 2015/08/29 12:55
+     * @param object _obj 待提交的参数对象
+     * @param string _reqMethod 请求类型(默认为post)
+     * @return 如果_obj不是对象类型返回''
+     *         否则，如果是'get'请求,返回'?key=val&..'格式的字符串
+     *              如果是'post请求,''key=value&...'格式的字符串
+     * */
+    vTools.prototype.objToReqStr = function( _obj, _reqMethod ){
+
+        if( "object" != typeof _obj )	 return "";
+
+        var reqDataStr = "",  attrValAry = new Array();
+        if( _obj ){   //如果传递了数据
+            for(var attr in _obj){
+                attrValAry.push( attr+"="+_obj[attr] );
+            }
+            reqDataStr = attrValAry.join('&');
+        }//if
+		
+		//如果是get类型，则前面加问号
+        return (_reqMethod && 'get' == _reqMethod.toLowerCase() ) ?  '?' + reqDataStr
+																															  :  reqDataStr;
+    }//parseObjToReqDataStr

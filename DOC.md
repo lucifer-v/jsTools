@@ -34,5 +34,7 @@
 2. vTools::getHex([_upperFlag])
 3. vTools::getRgb([_upperFlag])	
 4. vTools::range( _iFrom, _iTo )	**[PHP同名]**
+###数据转换
+1、vTools::objToReqStr( _obj, _reqMethod )
 
 ##非原创功能
