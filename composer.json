@@ -1,0 +1,7 @@
+{
+	"name":"lucifer-v/js-tools",
+	"description":"js tools",
+	"require":{
+		"php":"^5.3.3 || ^7"
+	}
+}
